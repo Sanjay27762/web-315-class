@@ -1,0 +1,33 @@
+<div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="@Type" name="password" id="password">
+    </div>
+
+    <button @onclick="OnLoginCallback">LOGIN</button>
+</div>
+
+<p>@LoginSuccessMessage</p>
+
+@code {
+    [Parameter]  
+    public string LoginSuccessMessage { get; set; } = "";
+
+    [Parameter]
+    public bool PasswordVisible { get; set; } = true;
+
+    [Parameter]
+    public string Type { get; set; } = "text";
+
+    private void OnLoginCallback(MouseEventArgs e)
+    {
+        LoginSuccessMessage = "Login Successful!";
+        PasswordVisible = false;
+        Type = "password";
+    }
+}
